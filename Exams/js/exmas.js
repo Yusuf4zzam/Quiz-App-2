@@ -27,7 +27,7 @@ burgerToggleBtn.addEventListener("click", () => {
 });
 
 /* -------------------------------------- Fetching The Data  -------------------------------------- */
-fetch("Exams/Exams-Data.json")
+fetch("./Exams-Data.json")
   .then((res) => res.json())
   .then((data) => createCards(data));
 
