@@ -1,0 +1,151 @@
+/*--------------------------- Header Box Rules ---------------------------*/
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 20px 0;
+  background-color: var(--bg-color-transparent);
+  backdrop-filter: blur(15px);
+  z-index: 999999999;
+  transition: 0.5s;
+
+  &.active {
+    box-shadow: 0 5px 20px 0.1px rgba(0, 0, 0, 0.1);
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 60px;
+  }
+
+  .logo {
+    a {
+      display: inline-block;
+      color: var(--heading-color);
+      font-size: 22px;
+      letter-spacing: 1px;
+      font-family: "Abril Fatface", cursive;
+      span {
+        color: var(--main-color-1);
+      }
+    }
+  }
+
+  .main-list {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 40px;
+
+    .lists {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+
+      a {
+        position: relative;
+        color: var(--text-color);
+        font-weight: 500;
+        letter-spacing: 1px;
+        opacity: 0.9;
+        transition: 0.3s;
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 100%;
+          height: 10px;
+          border-radius: 5px;
+          background: var(--main-color-1);
+          bottom: 0;
+          left: -5px;
+          z-index: -1;
+          opacity: 0;
+          transition: 0.3s;
+        }
+
+        &:hover,
+        &.active {
+          color: var(--heading-color);
+          &::after {
+            opacity: 0.2;
+          }
+        }
+      }
+    }
+
+    .icon {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      border-radius: 50%;
+      color: var(--heading-color);
+      box-shadow: 0 5px 20px 0.1px rgba(0, 0, 0, 0.1);
+      cursor: pointer;
+
+      &:after {
+        content: "\f186";
+        font-family: "Font Awesome 5 Free";
+        font-weight: bold;
+      }
+
+      &.active {
+        &:after {
+          content: "\f185";
+        }
+      }
+    }
+  }
+
+  .toggle-btn {
+    font-size: 24px;
+    display: none;
+    color: var(--heading-color);
+    cursor: pointer;
+  }
+}
+
+/*--------------------------- Header Responsive Design ---------------------------*/
+
+@media (max-width: 991px) {
+  .header {
+    .container {
+      gap: 0 60px;
+      justify-content: space-between;
+    }
+
+    .toggle-btn {
+      display: block;
+    }
+
+    .main-list {
+      flex: unset;
+      width: 100%;
+      justify-content: center;
+      align-content: center;
+      align-items: flex-start;
+      height: 0;
+      overflow: hidden;
+      order: 3;
+      transition: 0.5s;
+
+      &.active {
+        height: calc(100vh - 75px);
+      }
+
+      .lists {
+        width: 100%;
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@keyframes imgAnimate {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes textAnimate {
+    40%,
+    60% {
+      left: calc(100% + 5px);
+    }
+  
+    100% {
+      left: 0;
+    }
+  }
+  
+  

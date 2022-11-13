@@ -1,0 +1,138 @@
+[
+  {
+    "img": "images/html.png",
+    "title": "HTML",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card"
+  },
+  {
+    "img": "images/css.png",
+    "title": "CSS",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card"
+  },
+  {
+    "img": "images/JavaScript.png",
+    "title": "JavaScript",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card"
+  },
+  {
+    "img": "images/Reactjs.png",
+    "title": "Reactjs",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  },
+  {
+    "img": "images/TypeScript.png",
+    "title": "TypeScript",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  },
+  {
+    "img": "images/pug.png",
+    "title": "Pugjs",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  },
+  {
+    "img": "images/NodeJs.png",
+    "title": "NodeJs",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  },
+  {
+    "img": "images/PHP.png",
+    "title": "PHP",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  },
+  {
+    "img": "images/Java.png",
+    "title": "Java",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  },
+  {
+    "img": "images/Python.png",
+    "title": "Python",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  },
+  {
+    "img": "images/dart.png",
+    "title": "Dart",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  },
+  {
+    "img": "images/Swift.png",
+    "title": "Swift",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  },
+  {
+    "img": "images/Ruby.png",
+    "title": "Ruby",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  },
+  {
+    "img": "images/sql.png",
+    "title": "SQL",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  },
+  {
+    "img": "images/C-Sharp.png",
+    "title": "C#",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  },
+  {
+    "img": "images/C-Plus.png",
+    "title": "C++",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  },
+  {
+    "img": "images/Scala.png",
+    "title": "Scala",
+    "provider": "W3School",
+    "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
+    "link": "#",
+    "classes": "card pending"
+  }
+]
