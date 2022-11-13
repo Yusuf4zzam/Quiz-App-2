@@ -19,6 +19,7 @@
         background: var(--bg-color-2);
         border-radius: 5px;
         box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        transition: 0.5s;
 
         &.pending {
           &:after {
@@ -34,6 +35,10 @@
             font-weight: 500;
             border-radius: 5px;
           }
+        }
+
+        &:hover {
+          transform: translateY(-5px);
         }
 
         img {

@@ -387,6 +387,8 @@ header .toggle-btn {
   border-radius: 5px;
   -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
           box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 .exams .content .exam-container .card.pending:after {
@@ -401,6 +403,11 @@ header .toggle-btn {
   letter-spacing: 1px;
   font-weight: 500;
   border-radius: 5px;
+}
+
+.exams .content .exam-container .card:hover {
+  -webkit-transform: translateY(-5px);
+          transform: translateY(-5px);
 }
 
 .exams .content .exam-container .card img {
