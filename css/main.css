@@ -688,6 +688,8 @@ header .toggle-btn {
     margin: 0 !important;
     border-radius: 5px !important;
     min-height: 150px;
+    -webkit-box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 10px rgba(0, 0, 0, 0.1);
   }
   .about .content-grid .card:hover {
     -webkit-transform: translateY(-5px) !important;
