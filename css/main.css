@@ -747,6 +747,9 @@ header .toggle-btn {
     -webkit-transform: translateY(-5px) !important;
             transform: translateY(-5px) !important;
   }
+  .about .content-info h2 {
+    font-size: 2rem !important;
+  }
 }
 
 /*--------------------------- testimonials Box Rules ---------------------------*/
