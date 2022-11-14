@@ -468,6 +468,9 @@ header .toggle-btn {
   .header-content br {
     display: none;
   }
+  .exams .content {
+    padding: 15px;
+  }
 }
 
 /*--------------------------- Footer Box Rules ---------------------------*/
