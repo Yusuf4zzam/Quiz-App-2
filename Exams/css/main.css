@@ -435,7 +435,7 @@ header .toggle-btn {
   color: var(--text-color);
   font-size: 14px;
   line-height: 1.5;
-  margin: 0.5rem 0 2rem;
+  margin: 0.5rem 0 0;
 }
 
 .exams .content .exam-container .card a {
@@ -443,14 +443,25 @@ header .toggle-btn {
   width: -webkit-fit-content;
   width: -moz-fit-content;
   width: fit-content;
-  margin: 0 auto;
-  padding: 5px 30px;
-  color: var(--heading-color);
-  border: 1px solid var(--heading-color);
+  margin: 2rem auto 0;
+  letter-spacing: 1px;
+  font-weight: 500;
+  color: #fff;
+  background: var(--main-color-1);
+  padding: 10px 20px;
+  border: 1px solid transparent;
   border-radius: 5px;
   text-transform: uppercase;
   letter-spacing: 1px;
-  font-weight: 500;
+  font-weight: bold;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.exams .content .exam-container .card a:hover {
+  background: transparent;
+  color: var(--main-color-1);
+  border: 1px solid var(--main-color-1);
 }
 
 @media (max-width: 767px) {

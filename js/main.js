@@ -8,33 +8,6 @@ window.addEventListener("scroll", () => {
   header.classList.toggle("active", window.scrollY > 50);
 });
 
-/* -------------------------------------- Slider Box Text Load  -------------------------------------- */
-let textload = $(".slider h1 span");
-
-let textloader = async () => {
-  await setTimeout(() => {
-    textload.textContent = "HTML";
-  }, 0);
-
-  await setTimeout(() => {
-    textload.textContent = "CSS";
-  }, 4000);
-
-  await setTimeout(() => {
-    textload.textContent = "JavaScript";
-  }, 8000);
-
-  await setTimeout(() => {
-    textload.textContent = "React";
-  }, 12000);
-};
-
-window.addEventListener("load", () => {
-  textloader();
-
-  setInterval(textloader, 16000);
-});
-
 /* -------------------------------------- Dark Mode Button  -------------------------------------- */
 let darkModeBtn = $(".header .icon");
 

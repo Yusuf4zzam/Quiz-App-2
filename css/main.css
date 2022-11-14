@@ -225,6 +225,18 @@ ul {
   }
 }
 
+@-webkit-keyframes slide {
+  100% {
+    top: -280px;
+  }
+}
+
+@keyframes slide {
+  100% {
+    top: -280px;
+  }
+}
+
 /*--------------------------- Header Box Rules ---------------------------*/
 header {
   position: fixed;
@@ -469,19 +481,49 @@ header .toggle-btn {
   margin-bottom: 1rem;
 }
 
-.slider .container .content-box h1 span {
+.slider .container .content-box h1 {
+  margin: 0 !important;
+}
+
+.slider .container .content-box p {
+  margin-top: 30px;
+}
+
+.slider .container .content-box .wrapper {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 7px;
+  font-size: 3rem;
+  font-family: "Abril Fatface", cursive;
+  color: var(--heading-color);
+  letter-spacing: 2px;
+  font-weight: 400;
+  height: 70px;
+  line-height: 70px;
+  overflow: hidden;
+}
+
+.slider .container .content-box .wrapper li {
+  position: relative;
+  top: 0;
+  -webkit-animation: slide 16s steps(4) infinite;
+          animation: slide 16s steps(4) infinite;
+}
+
+.slider .container .content-box .wrapper span {
   position: relative;
 }
 
-.slider .container .content-box h1 span:after {
+.slider .container .content-box .wrapper span:after {
   content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
+  width: calc(100% + 5px);
   height: 100%;
-  background: var(--bg-color);
   border-left: 2px solid var(--heading-color);
+  background: var(--bg-color);
+  position: absolute;
+  top: 0;
+  left: 0;
   -webkit-animation: textAnimate 4s infinite;
           animation: textAnimate 4s infinite;
 }
@@ -517,8 +559,18 @@ header .toggle-btn {
 
 @media (max-width: 767px) {
   .slider h1,
-  .about .content-info h2 {
+  .slider .about .content-info h2 {
     font-size: 2rem !important;
+    position: relative;
+    -webkit-backdrop-filter: blur(15px);
+            backdrop-filter: blur(15px);
+    z-index: 5;
+  }
+  .slider .wrapper {
+    font-size: 2rem !important;
+  }
+  .slider .shape.circle {
+    z-index: 1 !important;
   }
 }
 
@@ -824,6 +876,9 @@ header .toggle-btn {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   -ms-flex-wrap: wrap;
       flex-wrap: wrap;
   gap: 20px;

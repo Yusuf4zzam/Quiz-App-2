@@ -50,18 +50,42 @@
       }
 
       h1 {
+        margin: 0 !important;
+      }
+
+      p {
+        margin-top: 30px;
+      }
+
+      .wrapper {
+        display: flex;
+        gap: 7px;
+        font-size: 3rem;
+        font-family: "Abril Fatface", cursive;
+        color: var(--heading-color);
+        letter-spacing: 2px;
+        font-weight: 400;
+        height: 70px;
+        line-height: 70px;
+        overflow: hidden;
+
+        li {
+          position: relative;
+          top: 0;
+          animation: slide 16s steps(4) infinite;
+        }
+
         span {
           position: relative;
-
           &:after {
             content: "";
-            position: absolute;
-            left: 0;
-            top: 0;
-            width: 100%;
+            width: calc(100% + 5px);
             height: 100%;
-            background: var(--bg-color);
             border-left: 2px solid var(--heading-color);
+            background: var(--bg-color);
+            position: absolute;
+            top: 0;
+            left: 0;
             animation: textAnimate 4s infinite;
           }
         }
@@ -95,9 +119,22 @@
 }
 
 @media (max-width: 767px) {
-  .slider h1,
-  .about .content-info h2 {
-    font-size: 2rem !important;
+  .slider {
+    h1,
+    .about .content-info h2 {
+      font-size: 2rem !important;
+      position: relative;
+      backdrop-filter: blur(15px);
+      z-index: 5;
+    }
+
+    .wrapper {
+      font-size: 2rem !important;
+    }
+
+    .shape.circle {
+      z-index: 1 !important;
+    }
   }
 }
 
@@ -352,6 +389,7 @@
 
       .date-box {
         display: flex;
+        justify-content: center;
         flex-wrap: wrap;
         gap: 20px;
         > div {
