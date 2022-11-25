@@ -57,7 +57,7 @@ function createCards(e) {
 
     // Create The Link Button
     let anchor = document.createElement("a");
-    anchor.href = "../../Exam-Page/index.html";
+    anchor.href = "../Exam-Page/index.html";
     anchor.textContent = "Enroll";
 
     // Append The Childrens To The Card Box
