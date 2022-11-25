@@ -29,7 +29,19 @@ burgerToggleBtn.addEventListener("click", () => {
 /* -------------------------------------- Fetching The Data  -------------------------------------- */
 fetch("./Exams-Data.json")
   .then((res) => res.json())
-  .then((data) => createCards(data));
+  .then((data) => createCards(data))
+  .finally((e) => {
+    let enrollBtn = document.querySelectorAll(".exam-container .card a");
+
+    enrollBtn.forEach((e) => {
+      e.addEventListener("click", (e) => {
+        localStorage.setItem(
+          "Exam-Title",
+          e.currentTarget.parentElement.dataset.title
+        );
+      });
+    });
+  });
 
 /* -------------------------------------- Create The Cards  -------------------------------------- */
 function createCards(e) {
@@ -37,6 +49,7 @@ function createCards(e) {
     // Create The Main Card Box
     let cardBox = document.createElement("div");
     cardBox.className = e.classes;
+    cardBox.setAttribute("data-title", e.dataTitle);
 
     // Create The Img
     let img = document.createElement("img");
@@ -84,7 +97,6 @@ let filterBtn = $$(".filter-btn");
 filterBtn.forEach((e) => {
   e.addEventListener("click", (e) => {
     filterBtn.forEach((e) => e.classList.remove("active"));
-
     e.currentTarget.classList.add("active");
 
     $$(".card").forEach((e) => e.classList.remove("active"));
@@ -96,3 +108,5 @@ filterBtn.forEach((e) => {
     });
   });
 });
+
+/* ----------------------------- On Click Enroll Button ----------------------------- */

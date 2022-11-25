@@ -1,19 +1,22 @@
 [
   {
-    "img": "images/html.png",
+    "dataTitle": "HTML",
+    "img": "images/HTML.png",
     "title": "HTML",
     "provider": "W3School",
     "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
     "classes": "all card available"
   },
   {
-    "img": "images/css.png",
+    "dataTitle": "CSS",
+    "img": "images/CSS.png",
     "title": "CSS",
     "provider": "W3School",
     "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
     "classes": "all card available"
   },
   {
+    "dataTitle": "JavaScript",
     "img": "images/JavaScript.png",
     "title": "JavaScript",
     "provider": "W3School",
@@ -21,6 +24,7 @@
     "classes": "all card available"
   },
   {
+    "dataTitle": "Reactjs",
     "img": "images/Reactjs.png",
     "title": "Reactjs",
     "provider": "W3School",
@@ -28,6 +32,7 @@
     "classes": "all card pending"
   },
   {
+    "dataTitle": "TypeScript",
     "img": "images/TypeScript.png",
     "title": "TypeScript",
     "provider": "W3School",
@@ -35,13 +40,15 @@
     "classes": "all card pending"
   },
   {
-    "img": "images/pug.png",
+    "dataTitle": "Pugjs",
+    "img": "images/Pug.png",
     "title": "Pugjs",
     "provider": "W3School",
     "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
     "classes": "all card pending"
   },
   {
+    "dataTitle": "NodeJs",
     "img": "images/NodeJs.png",
     "title": "NodeJs",
     "provider": "W3School",
@@ -49,6 +56,7 @@
     "classes": "all card pending"
   },
   {
+    "dataTitle": "PHP",
     "img": "images/PHP.png",
     "title": "PHP",
     "provider": "W3School",
@@ -56,6 +64,7 @@
     "classes": "all card pending"
   },
   {
+    "dataTitle": "Java",
     "img": "images/Java.png",
     "title": "Java",
     "provider": "W3School",
@@ -63,6 +72,7 @@
     "classes": "all card pending"
   },
   {
+    "dataTitle": "Python",
     "img": "images/Python.png",
     "title": "Python",
     "provider": "W3School",
@@ -70,13 +80,15 @@
     "classes": "all card pending"
   },
   {
-    "img": "images/dart.png",
+    "dataTitle": "Dart",
+    "img": "images/Dart.png",
     "title": "Dart",
     "provider": "W3School",
     "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
     "classes": "all card pending"
   },
   {
+    "dataTitle": "Swift",
     "img": "images/Swift.png",
     "title": "Swift",
     "provider": "W3School",
@@ -84,6 +96,7 @@
     "classes": "all card pending"
   },
   {
+    "dataTitle": "Ruby",
     "img": "images/Ruby.png",
     "title": "Ruby",
     "provider": "W3School",
@@ -91,27 +104,31 @@
     "classes": "all card pending"
   },
   {
-    "img": "images/sql.png",
+    "dataTitle": "SQL",
+    "img": "images/SQL.png",
     "title": "SQL",
     "provider": "W3School",
     "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
     "classes": "all card pending"
   },
   {
+    "dataTitle": "C-Sharp",
     "img": "images/C-Sharp.png",
     "title": "C#",
     "provider": "W3School",
     "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
-    "classes": "all card pending"
+    "classes": "all card"
   },
   {
-    "img": "images/C-Plus.png",
+    "dataTitle": "C-Plus-Plus",
+    "img": "images/C-Plus-Plus.png",
     "title": "C++",
     "provider": "W3School",
     "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
-    "classes": "all card pending"
+    "classes": "all card"
   },
   {
+    "dataTitle": "Scala",
     "img": "images/Scala.png",
     "title": "Scala",
     "provider": "W3School",

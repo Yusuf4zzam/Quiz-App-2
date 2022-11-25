@@ -423,6 +423,15 @@ header .toggle-btn {
   }
 }
 
+body {
+  height: 100vh;
+  overflow: hidden;
+}
+
+body.active {
+  height: unset;
+}
+
 /*--------------------------- Header Content Rules ---------------------------*/
 .header-content {
   margin-top: 100px;
@@ -490,6 +499,220 @@ header .toggle-btn {
   .start-btn button {
     font-size: 1.5em;
     padding: 8px 15px;
+  }
+}
+
+.exam {
+  margin-top: 500px;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.exam.active {
+  margin-top: 0 !important;
+  opacity: 1;
+}
+
+/*--------------------------- Counter Box Rules ---------------------------*/
+.counter {
+  margin-bottom: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 20px;
+  color: var(--heading-color);
+}
+
+.counter .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  gap: 5px;
+}
+
+/*--------------------------- From Box Rules ---------------------------*/
+form .container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 30px;
+}
+
+form .container .question-box {
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 20px;
+  padding: 30px;
+  -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 5px;
+}
+
+form .container .question-box.wrong {
+  -webkit-box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
+          box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
+  border: 1px solid #f00;
+}
+
+form .container .question-box.wrong .number {
+  color: #f00;
+}
+
+form .container .question-box.right {
+  -webkit-box-shadow: 0 5px 20px rgba(0, 255, 0, 0.3);
+          box-shadow: 0 5px 20px rgba(0, 255, 0, 0.3);
+  border: 1px solid #0f0;
+}
+
+form .container .question-box.right .number {
+  color: #0f0;
+}
+
+form .container .question-box .number {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 7em;
+  color: var(--heading-color);
+  letter-spacing: 3px;
+  z-index: -10;
+}
+
+form .container .question-box:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  -webkit-backdrop-filter: blur(8px);
+          backdrop-filter: blur(8px);
+  z-index: -1;
+}
+
+form .container .question-box .input-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
+}
+
+form .container .question-box .input-container label,
+form .container .question-box .input-container input {
+  cursor: pointer;
+}
+
+form .container .question-box .input-container label {
+  position: relative;
+  font-size: 20px;
+  margin-left: 30px;
+  color: var(--heading-color);
+}
+
+form .container .question-box .input-container label::after {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border: 2px solid var(--heading-color);
+  position: absolute;
+  left: -30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+}
+
+form .container .question-box .input-container label:before {
+  content: "\f00c";
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  left: -27px;
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(180deg);
+          transform: translateY(-50%) rotate(180deg);
+  font-size: 11px;
+  color: var(--heading-color);
+  opacity: 0;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+form .container .question-box .input-container input {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+form .container .question-box .input-container input:checked + label:before {
+  -webkit-transform: translateY(-50%) rotate(360deg);
+          transform: translateY(-50%) rotate(360deg);
+  opacity: 1;
+}
+
+/*--------------------------- Error handler Rules ---------------------------*/
+.error-handler {
+  min-height: calc(100vh - 75px);
+  margin-top: 75px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+
+.error-handler .container-box {
+  padding: 0 15px;
+}
+
+.error-handler .container-box svg {
+  font-size: 3em;
+  color: var(--main-color-2);
+}
+
+.error-handler .container-box h3 {
+  font-size: 3em;
+  letter-spacing: 1px;
+  color: var(--heading-color);
+  margin: 10px 0 15px;
+}
+
+.error-handler .container-box p {
+  color: var(--text-color);
+  letter-spacing: 1px;
+  line-height: 1.5;
+  font-size: 18px;
+  width: 70%;
+  margin: 0 auto;
+}
+
+@media (max-width: 767px) {
+  .error-handler p {
+    width: 100% !important;
   }
 }
 /*# sourceMappingURL=main.css.map */

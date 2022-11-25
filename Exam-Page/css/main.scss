@@ -3,6 +3,15 @@
 @import "../../includes/CssIncludes/Animations";
 @import "../../includes/CssIncludes/header-style";
 
+body {
+  height: 100vh;
+  overflow: hidden;
+
+  &.active {
+    height: unset;
+  }
+}
+
 /*--------------------------- Header Content Rules ---------------------------*/
 .header-content {
   margin-top: 100px;
@@ -60,5 +69,181 @@
       font-size: 1.5em;
       padding: 8px 15px;
     }
+  }
+}
+
+.exam {
+  margin-top: 500px;
+  opacity: 0;
+  transition: 0.5s;
+
+  &.active {
+    margin-top: 0 !important;
+    opacity: 1;
+  }
+}
+
+/*--------------------------- Counter Box Rules ---------------------------*/
+.counter {
+  margin-bottom: 15px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 20px;
+  color: var(--heading-color);
+  .container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 5px;
+  }
+}
+
+/*--------------------------- From Box Rules ---------------------------*/
+form {
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    .question-box {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      padding: 30px;
+      box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+      border-radius: 5px;
+
+      &.wrong {
+        box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
+        border: 1px solid #f00;
+        .number {
+          color: #f00;
+        }
+      }
+
+      &.right {
+        box-shadow: 0 5px 20px rgba(0, 255, 0, 0.3);
+        border: 1px solid #0f0;
+        .number {
+          color: #0f0;
+        }
+      }
+
+      .number {
+        position: absolute;
+        right: 30px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 7em;
+        color: var(--heading-color);
+        letter-spacing: 3px;
+        z-index: -10;
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        backdrop-filter: blur(8px);
+        z-index: -1;
+      }
+
+      .input-container {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        label,
+        input {
+          cursor: pointer;
+        }
+
+        label {
+          position: relative;
+          font-size: 20px;
+          margin-left: 30px;
+          color: var(--heading-color);
+
+          &::after {
+            content: "";
+            width: 12px;
+            height: 12px;
+            border: 2px solid var(--heading-color);
+            position: absolute;
+            left: -30px;
+            top: 50%;
+            transform: translateY(-50%);
+          }
+
+          &:before {
+            content: "\f00c";
+            font-family: "Font Awesome 5 Free";
+            font-weight: 900;
+            width: 12px;
+            height: 12px;
+            position: absolute;
+            left: -27px;
+            top: 50%;
+            transform: translateY(-50%) rotate(180deg);
+            font-size: 11px;
+            color: var(--heading-color);
+            opacity: 0;
+            transition: 0.3s;
+          }
+        }
+
+        input {
+          appearance: none;
+
+          &:checked {
+            + label:before {
+              transform: translateY(-50%) rotate(360deg);
+              opacity: 1;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+/*--------------------------- Error handler Rules ---------------------------*/
+.error-handler {
+  min-height: calc(100vh - 75px);
+  margin-top: 75px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+
+  .container-box {
+    padding: 0 15px;
+    svg {
+      font-size: 3em;
+      color: var(--main-color-2);
+    }
+
+    h3 {
+      font-size: 3em;
+      letter-spacing: 1px;
+      color: var(--heading-color);
+      margin: 10px 0 15px;
+    }
+
+    p {
+      color: var(--text-color);
+      letter-spacing: 1px;
+      line-height: 1.5;
+      font-size: 18px;
+      width: 70%;
+      margin: 0 auto;
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  .error-handler p {
+    width: 100% !important;
   }
 }
