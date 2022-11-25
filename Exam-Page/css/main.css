@@ -175,6 +175,68 @@ ul {
   list-style: none;
 }
 
+@-webkit-keyframes imgAnimate {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes imgAnimate {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes textAnimate {
+  40%,
+  60% {
+    left: calc(100% + 5px);
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes textAnimate {
+  40%,
+  60% {
+    left: calc(100% + 5px);
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes slide {
+  100% {
+    top: -560px;
+  }
+}
+
+@keyframes slide {
+  100% {
+    top: -560px;
+  }
+}
+
 /*--------------------------- Header Box Rules ---------------------------*/
 header {
   position: fixed;
@@ -361,169 +423,73 @@ header .toggle-btn {
   }
 }
 
-/*--------------------------- Exams Box Rules ---------------------------*/
-.exams {
-  padding: 100px 0;
+/*--------------------------- Header Content Rules ---------------------------*/
+.header-content {
+  margin-top: 100px;
 }
 
-.exams .controlers {
-  margin-bottom: 15px;
-  padding-right: 10px;
+.header-content .container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
-  gap: 30px;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 15px;
 }
 
-.exams .controlers button {
-  display: inline-block;
-  color: var(--heading-color);
-  background: transparent;
+.header-content .container h2 {
+  letter-spacing: 6px;
+  font-family: "Abril Fatface", cursive;
+  font-weight: 600;
+}
+
+.header-content .container img {
+  width: 70px;
+}
+
+/*--------------------------- Start Button Rules ---------------------------*/
+.start-btn {
+  padding: 15px 0;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+.start-btn.active {
+  top: 0;
+  opacity: 0;
+}
+
+.start-btn button {
+  padding: 8px 30px;
+  background: none;
   border: none;
-  font-size: 14px;
+  color: var(--heading-color);
   font-weight: 600;
   letter-spacing: 1px;
-  text-transform: uppercase;
+  font-size: 2.5em;
+  border: 2px solid var(--heading-color);
+  border-radius: 5px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
   cursor: pointer;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
 }
 
-.exams .controlers button.active {
-  color: var(--main-color-1);
-}
-
-.exams .content {
-  padding: 30px;
-  border: 3px solid var(--bg-color-2);
-  border-radius: 5px;
-}
-
-.exams .content .exam-container {
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-}
-
-.exams .content .exam-container .card {
-  position: relative;
-  padding: 30px;
-  background: var(--bg-color-2);
-  border-radius: 5px;
-  -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.exams .content .exam-container .card.hidden {
-  display: none;
-}
-
-.exams .content .exam-container .card.active {
-  display: block;
-}
-
-.exams .content .exam-container .card.pending:after {
-  content: "Soon";
-  position: absolute;
-  right: 30px;
-  top: 30px;
-  font-size: 11px;
-  color: #fff;
-  padding: 3px 7px;
-  background: #f44336;
-  letter-spacing: 1px;
-  font-weight: 500;
-  border-radius: 5px;
-}
-
-.exams .content .exam-container .card:hover {
-  -webkit-transform: translateY(-5px);
-          transform: translateY(-5px);
-}
-
-.exams .content .exam-container .card img {
-  max-width: 50px;
-  margin-bottom: 20px;
-  color: var(--text-color);
-}
-
-.exams .content .exam-container .card h4 {
-  color: var(--heading-color);
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  padding: 0.13rem 0.75rem;
-  border-left: 3px solid var(--main-color-2);
-}
-
-.exams .content .exam-container .card h3 {
-  margin: 0.5rem 0 1rem;
-  font-size: 1.5rem;
-  color: var(--heading-color);
-}
-
-.exams .content .exam-container .card p {
-  color: var(--text-color);
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0.5rem 0 0;
-}
-
-.exams .content .exam-container .card a {
-  display: block;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 2rem auto 0;
-  letter-spacing: 1px;
-  font-weight: 500;
-  color: #fff;
-  background: var(--main-color-1);
-  padding: 10px 20px;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  font-weight: bold;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.exams .content .exam-container .card a:hover {
-  background: transparent;
-  color: var(--main-color-1);
-  border: 1px solid var(--main-color-1);
+@media (max-width: 991px) {
+  .start-btn button {
+    font-size: 2em;
+  }
 }
 
 @media (max-width: 767px) {
-  .header-content br {
-    display: none;
+  .start-btn button {
+    font-size: 1.5em;
+    padding: 8px 15px;
   }
-  .exams .content {
-    padding: 15px;
-  }
-}
-
-/*--------------------------- Footer Box Rules ---------------------------*/
-footer {
-  text-align: center;
-  color: var(--text-color);
-  padding: 30px 0;
-  font-size: 18px;
-  letter-spacing: 1px;
-}
-
-footer svg {
-  color: #f00;
-  margin-left: 5px;
 }
 /*# sourceMappingURL=main.css.map */

@@ -227,13 +227,13 @@ ul {
 
 @-webkit-keyframes slide {
   100% {
-    top: -280px;
+    top: -560px;
   }
 }
 
 @keyframes slide {
   100% {
-    top: -280px;
+    top: -560px;
   }
 }
 
@@ -507,8 +507,8 @@ header .toggle-btn {
 .slider .container .content-box .wrapper li {
   position: relative;
   top: 0;
-  -webkit-animation: slide 16s steps(4) infinite;
-          animation: slide 16s steps(4) infinite;
+  -webkit-animation: slide 32s steps(8) infinite;
+          animation: slide 32s steps(8) infinite;
 }
 
 .slider .container .content-box .wrapper span {

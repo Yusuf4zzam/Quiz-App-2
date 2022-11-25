@@ -57,7 +57,7 @@ function createCards(e) {
 
     // Create The Link Button
     let anchor = document.createElement("a");
-    anchor.href = e.link;
+    anchor.href = "../../Exam-Page/index.html";
     anchor.textContent = "Enroll";
 
     // Append The Childrens To The Card Box
@@ -66,7 +66,7 @@ function createCards(e) {
     cardBox.appendChild(mainTitle);
     cardBox.appendChild(paragraph);
 
-    if (e.classes !== "card pending") {
+    if (e.classes !== "all card pending") {
       cardBox.appendChild(anchor);
     }
 
@@ -77,3 +77,22 @@ function createCards(e) {
     examsContainer.appendChild(cardBox);
   });
 }
+
+/* ----------------------------- Exams Filter Box ----------------------------- */
+let filterBtn = $$(".filter-btn");
+
+filterBtn.forEach((e) => {
+  e.addEventListener("click", (e) => {
+    filterBtn.forEach((e) => e.classList.remove("active"));
+
+    e.currentTarget.classList.add("active");
+
+    $$(".card").forEach((e) => e.classList.remove("active"));
+
+    $$(".card").forEach((e) => e.classList.add("hidden"));
+
+    $$(e.currentTarget.dataset.filter).forEach((e) => {
+      e.classList.add("active");
+    });
+  });
+});

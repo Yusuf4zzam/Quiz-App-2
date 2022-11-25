@@ -2,14 +2,17 @@ doctype html
 html(lang="en")
     head
         meta(charset="UTF-8")
+        meta(name="description", content="We Provieds Quizzes For (HTML, CSS, JS, React) To Make You Know Your Level In Each One")
         meta(http-equiv="X-UA-Compatible", content="IE=edge")
         meta(name="viewport", content="width=device-width, initial-scale=1.0")
-        title Exams | Examiner
-
+        meta(name="keywords", content="HTML Exam, Js Exam,JavaScript Exam , CSS Exam, React Exam, HTML, CSS, Javascript, React")
+        title Examiner
+        
         <!-- ------------------------------------  CSS Files ------------------------------------ -->
         link(rel="stylesheet", href="../css/all.min.css")
         link(rel="stylesheet", href="css/main.css")
-    body 
+
+    body
 
         <!-- ------------------------------------  Header Box ------------------------------------ -->       
         header.header 
@@ -29,38 +32,24 @@ html(lang="en")
                         li
                             a(href="../index.html#events") Events
                         li
-                            a(href="../index.html#events").active Exams
+                            a(href="../index.html#events") Exams
 
                     .icon 
 
                 .toggle-btn 
                     i(class="fa-solid fa-bars")
 
-        <!-- ------------------------------------  JS Files ------------------------------------ -->       
-        section.exams 
-            .container 
-                .header-content 
-                    h3 Exams
-                    h2 Browse Our Exams, 
-                        br
-                        |Gain Experience
+        main
+            <!-- ------------------------------------  Header Content Box ------------------------------------ -->
+            .header-content 
+                .container 
+                    img(src="../Exams/images/html.png", alt="")
+                    h2 HTML
+                
+            <!-- ------------------------------------  Start Button Box ------------------------------------ -->
+            .start-btn 
+                button Start The Exam
 
-                .controlers
-                    button.filter-btn(data-filter=".all").active All
-                    button.filter-btn(data-filter=".available") Available
-                    button.filter-btn(data-filter=".pending") Soon
-
-                .content 
-                    .exam-container 
-
-        <!-- ------------------------------------  Footer Box ------------------------------------ -->       
-        footer
-            .container 
-                .copy-right 
-                    p Made & Designed By 
-                        b Yusuf Azzam
-                        i(class="fa-solid fa-heart")
-
-        <!-- ------------------------------------  JS Files ------------------------------------ -->
+            <!-- ------------------------------------  JS Files ------------------------------------ -->
         script(src="../js/all.min.js")
-        script(src="js/exmas.js")
+        script(src="js/main.js")
