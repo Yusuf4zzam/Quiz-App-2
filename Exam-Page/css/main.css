@@ -423,18 +423,10 @@ header .toggle-btn {
   }
 }
 
-body {
-  height: 100vh;
-  overflow: hidden;
-}
-
-body.active {
-  height: unset;
-}
-
 /*--------------------------- Header Content Rules ---------------------------*/
 .header-content {
   margin-top: 100px;
+  margin-bottom: 20px;
 }
 
 .header-content .container {
@@ -502,50 +494,61 @@ body.active {
   }
 }
 
-.exam {
+main {
+  overflow: hidden;
+  height: 100vh;
+}
+
+main.exam-active {
+  height: 100%;
+  overflow: auto;
+}
+
+main.exam-active .exam {
+  margin-top: 0;
+  opacity: 1;
+}
+
+main .exam {
   margin-top: 500px;
   opacity: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
-.exam.active {
-  margin-top: 0 !important;
-  opacity: 1;
-}
-
-/*--------------------------- Counter Box Rules ---------------------------*/
-.counter {
-  margin-bottom: 15px;
-  font-weight: bold;
-  letter-spacing: 1px;
-  font-size: 20px;
-  color: var(--heading-color);
-}
-
-.counter .container {
+main .exam .container .info {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  gap: 5px;
-}
-
-/*--------------------------- From Box Rules ---------------------------*/
-form .container {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
   gap: 30px;
 }
 
-form .container .question-box {
+main .exam .container .info .counter {
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: var(--heading-color);
+}
+
+main .exam .container .info .question-count {
+  color: var(--text-color);
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+main .exam .container .info .question-count span {
+  color: var(--heading-color);
+}
+
+main .exam .container .question-box {
   position: relative;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -555,118 +558,252 @@ form .container .question-box {
       -ms-flex-direction: column;
           flex-direction: column;
   gap: 20px;
-  padding: 30px;
-  -webkit-box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-          box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
-  border-radius: 5px;
+  padding: 30px 20px;
+  background: var(--bg-color-transparent);
+  -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  margin: 15px 0 30px;
 }
 
-form .container .question-box.wrong {
-  -webkit-box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
-          box-shadow: 0 5px 20px rgba(255, 0, 0, 0.3);
-  border: 1px solid #f00;
-}
-
-form .container .question-box.wrong .number {
-  color: #f00;
-}
-
-form .container .question-box.right {
-  -webkit-box-shadow: 0 5px 20px rgba(0, 255, 0, 0.3);
-          box-shadow: 0 5px 20px rgba(0, 255, 0, 0.3);
-  border: 1px solid #0f0;
-}
-
-form .container .question-box.right .number {
-  color: #0f0;
-}
-
-form .container .question-box .number {
-  position: absolute;
-  right: 30px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-  font-size: 7em;
-  color: var(--heading-color);
-  letter-spacing: 3px;
-  z-index: -10;
-}
-
-form .container .question-box:after {
+main .exam .container .question-box:after {
   content: "";
   position: absolute;
   left: 0;
   top: 0;
   width: 100%;
   height: 100%;
-  -webkit-backdrop-filter: blur(8px);
-          backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(5px);
+          backdrop-filter: blur(5px);
   z-index: -1;
 }
 
-form .container .question-box .input-container {
+main .exam .container .question-box h2 {
+  margin-bottom: 10px;
+  color: var(--heading-color);
+  line-height: 1.5;
+  font-size: 30px;
+}
+
+main .exam .container .question-box .input-container {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
-  gap: 15px;
 }
 
-form .container .question-box .input-container label,
-form .container .question-box .input-container input {
-  cursor: pointer;
-}
-
-form .container .question-box .input-container label {
-  position: relative;
-  font-size: 20px;
-  margin-left: 30px;
-  color: var(--heading-color);
-}
-
-form .container .question-box .input-container label::after {
-  content: "";
-  width: 12px;
-  height: 12px;
-  border: 2px solid var(--heading-color);
-  position: absolute;
-  left: -30px;
-  top: 50%;
-  -webkit-transform: translateY(-50%);
-          transform: translateY(-50%);
-}
-
-form .container .question-box .input-container label:before {
-  content: "\f00c";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-  width: 12px;
-  height: 12px;
-  position: absolute;
-  left: -27px;
-  top: 50%;
-  -webkit-transform: translateY(-50%) rotate(180deg);
-          transform: translateY(-50%) rotate(180deg);
-  font-size: 11px;
-  color: var(--heading-color);
-  opacity: 0;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
-form .container .question-box .input-container input {
+main .exam .container .question-box .input-container input {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
 }
 
-form .container .question-box .input-container input:checked + label:before {
-  -webkit-transform: translateY(-50%) rotate(360deg);
-          transform: translateY(-50%) rotate(360deg);
+main .exam .container .question-box .input-container input:checked + label {
+  color: var(--heading-color);
+}
+
+main .exam .container .question-box .input-container input:checked + label:after {
+  -webkit-transform: translateY(-50%) rotate(0deg) scale(1);
+          transform: translateY(-50%) rotate(0deg) scale(1);
+  background: var(--heading-color);
   opacity: 1;
+}
+
+main .exam .container .question-box .input-container input:checked + label:before {
+  border-color: transparent;
+}
+
+main .exam .container .question-box .input-container label {
+  position: relative;
+  font-size: 18px;
+  font-weight: 600;
+  margin-left: 35px;
+  color: var(--text-color);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+main .exam .container .question-box .input-container label:after {
+  content: "\f00c";
+  font-family: "Font Awesome 5 Free";
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  left: -35px;
+  top: 50%;
+  -webkit-transform: translateY(-50%) rotate(-280deg) scale(0);
+          transform: translateY(-50%) rotate(-280deg) scale(0);
+  width: 22px;
+  height: 22px;
+  border-radius: 3px;
+  background: var(--text-color);
+  color: var(--bg-color-1);
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+main .exam .container .question-box .input-container label:before {
+  content: "";
+  position: absolute;
+  left: -35px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  border: 2px solid var(--text-color);
+  border-radius: 3px;
+}
+
+main .exam .container .question-box .number {
+  position: absolute;
+  right: 50px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  font-size: 7em;
+  z-index: -10;
+  font-weight: bold;
+  color: var(--heading-color);
+}
+
+main .exam .submit {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  gap: 30px;
+}
+
+main .exam .submit .bullets {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  gap: 7px;
+}
+
+main .exam .submit .bullets span {
+  width: 30px;
+  height: 30px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: var(--bg-color-1);
+  border-radius: 50%;
+  background: var(--heading-color);
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 14px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  pointer-events: none;
+  opacity: 0.5;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+main .exam .submit .bullets span.focus {
+  opacity: 1;
+}
+
+main .exam .submit button {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  padding: 15px 0;
+  border: none;
+  color: var(--bg-color-1);
+  background: var(--heading-color);
+  font-size: 18px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
+
+/*--------------------------- Error handler Rules ---------------------------*/
+.grade-box .container {
+  min-height: calc(100vh - 157px);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.grade-box .container h2 {
+  color: var(--heading-color);
+  font-size: 4em;
+  letter-spacing: 6px;
+}
+
+.grade-box .container h2.perfect {
+  color: #4caf50;
+}
+
+.grade-box .container h2.good {
+  color: #cddc39;
+}
+
+.grade-box .container h2.again {
+  color: #f44336;
+}
+
+.grade-box .container p {
+  color: var(--text-color);
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-size: 20px;
+  text-align: center;
 }
 
 /*--------------------------- Error handler Rules ---------------------------*/
@@ -714,5 +851,19 @@ form .container .question-box .input-container input:checked + label:before {
   .error-handler p {
     width: 100% !important;
   }
+}
+
+/*--------------------------- Footer Box Rules ---------------------------*/
+footer {
+  text-align: center;
+  color: var(--text-color);
+  padding: 30px 0;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+footer svg {
+  color: #f00;
+  margin-left: 5px;
 }
 /*# sourceMappingURL=main.css.map */

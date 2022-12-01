@@ -972,23 +972,6 @@ header .toggle-btn {
   outline: none;
 }
 
-.events .footer-content form .input-container input:focus + label {
-  opacity: 0;
-}
-
-.events .footer-content form .input-container label {
-  position: absolute;
-  left: 15px;
-  top: 13px;
-  font-size: 14px;
-  color: var(--text-color);
-  letter-spacing: 1px;
-  cursor: text;
-  opacity: 1;
-  -webkit-transition: 0.3s;
-  transition: 0.3s;
-}
-
 .events .footer-content form .input-container button {
   position: absolute;
   right: -2px;

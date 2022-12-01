@@ -52,28 +52,37 @@ html(lang="en")
 
             <!-- ------------------------------------  Exam Box ------------------------------------ -->
             .exam
-                <!-- ------------------------------------  Counter Box ------------------------------------ -->
-                .counter 
-                    .container
-                        .timer 00:00
                 <!-- ------------------------------------  Exam Box ------------------------------------ -->
-                form(action="")
-                    .container 
-                        .question-box
-                            .input-container 
-                                input(type="radio", name="Question")
-                                label(for="checkbox") asdasf
-                            .input-container 
-                                input(type="radio", name="Question")
-                                label(for="checkbox") asdasf
-                            .input-container 
-                                input(type="radio", name="Question")
-                                label(for="checkbox") asdasf
-                            .input-container 
-                                input(type="radio", name="Question")
-                                label(for="checkbox") asdasf
-                            .number 01
+                .container
+                    .info 
+                        <!-- ------------------------------------  Counter Box ------------------------------------ -->
+                        .question-count 
+                            h4 Question 
+                                span.start-count
+                                | 
+                                |of 
+                                span.count 40
+                                |: 
 
+                        <!-- ------------------------------------  Counter Box ------------------------------------ -->
+                        .counter 
+                            .timer 00:00
+
+                    <!-- ------------------------------------  Question Box ------------------------------------ -->
+                    .question-box
+
+                    <!-- ------------------------------------  Submit Box ------------------------------------ -->
+                    .submit
+                        .bullets 
+
+                        button.submit Next
+        <!-- ------------------------------------  Footer Box ------------------------------------ -->       
+        footer
+            .container 
+                .copy-right 
+                    p Made & Designed By 
+                        b Yusuf Azzam
+                        i(class="fa-solid fa-heart")
 
             <!-- ------------------------------------  JS Files ------------------------------------ -->
         script(src="../js/all.min.js")

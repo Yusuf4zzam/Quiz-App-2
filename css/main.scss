@@ -469,22 +469,7 @@
           background: #fff;
           &:focus {
             outline: none;
-
-            + label {
-              opacity: 0;
-            }
           }
-        }
-        label {
-          position: absolute;
-          left: 15px;
-          top: 13px;
-          font-size: 14px;
-          color: var(--text-color);
-          letter-spacing: 1px;
-          cursor: text;
-          opacity: 1;
-          transition: 0.3s;
         }
         button {
           position: absolute;

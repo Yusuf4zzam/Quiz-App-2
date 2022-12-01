@@ -30,7 +30,6 @@ let burgerToggleBtn = $(".header .toggle-btn");
 
 burgerToggleBtn.addEventListener("click", () => {
   headerLists.classList.toggle("active");
-  document.body.classList.toggle("active");
 });
 
 /* -------------------------------------- Navbar Active Class Toggle  -------------------------------------- */

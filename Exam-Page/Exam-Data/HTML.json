@@ -1,0 +1,117 @@
+[
+  {
+    "qusetionTitle": "What does HTML stand for?",
+    "answer_1": "Hyperlinks and Text Markup language",
+    "answer_2": "Hyper text markup language",
+    "answer_3": "Home tool markup language",
+    "correctAnswer": "Hyper text markup language"
+  },
+  {
+    "qusetionTitle": "Who is making the Web standards?",
+    "answer_1": "Microsoft",
+    "answer_2": "Google",
+    "answer_3": "The world wide web consortium",
+    "answer_4": "Mozilla",
+    "correctAnswer": "The world wide web consortium"
+  },
+  {
+    "qusetionTitle": "Choose the correct HTML element for the largest heading:",
+    "answer_1": "<h1>",
+    "answer_2": "<head>",
+    "answer_3": "<h6>",
+    "answer_4": "<heading>",
+    "correctAnswer": "<h1>"
+  },
+  {
+    "qusetionTitle": "What is the correct HTML element for inserting a line break?",
+    "answer_1": "<br>",
+    "answer_2": "<lb>",
+    "answer_3": "<break>",
+    "answer_4": "<breakline>",
+    "correctAnswer": "<br>"
+  },
+  {
+    "qusetionTitle": "What is the correct HTML for adding a background color?",
+    "answer_1": "<background>yellow</background>",
+    "answer_2": "<body bg='yellow'>",
+    "answer_3": "<body style='background-color: yellow'>",
+    "correctAnswer": "<body style='background-color: yellow'>"
+  },
+  {
+    "qusetionTitle": "Choose the correct HTML element to define important text",
+    "answer_1": "<strong>",
+    "answer_2": "<i>",
+    "answer_3": "<b>",
+    "answer_4": "<important>",
+    "correctAnswer": "<strong>"
+  },
+  {
+    "qusetionTitle": "Choose the correct HTML element to define emphasized text",
+    "answer_1": "<i>",
+    "answer_2": "<em>",
+    "answer_3": "<italic>",
+    "correctAnswer": "<i>"
+  },
+  {
+    "qusetionTitle": "What is the correct HTML for creating a hyperlink?",
+    "answer_1": "<a href='https://www.google.com'>Google</a>",
+    "answer_2": "<a url='https://www.google.com'>Google</a>",
+    "answer_3": "<a name='https://www.google.com'>Google</a>",
+    "answer_4": "<a>https://www.google.com</a>",
+    "correctAnswer": "<a href='https://www.google.com'>Google</a>"
+  },
+  {
+    "qusetionTitle": "Which character is used to indicate an end tag?",
+    "answer_1": "^",
+    "answer_2": "/",
+    "answer_3": "*",
+    "answer_4": "<",
+    "correctAnswer": "/"
+  },
+  {
+    "qusetionTitle": "How can you open a link in a new tab/browser window?",
+    "answer_1": "<a href='Url' new>",
+    "answer_2": "<a href='Url' traget='new'>",
+    "answer_3": "<a href='Url' new-window>",
+    "answer_4": "<a href='Url' traget='_blank'>",
+    "correctAnswer": "<a href='Url' traget='_blank'>"
+  },
+  {
+    "qusetionTitle": "Which of these elements are all <table> elements?",
+    "answer_1": "<table><head><tfoot>",
+    "answer_2": "<table><tr><td>",
+    "answer_3": "<table><tr><tt>",
+    "answer_4": "<thead><body><tr>",
+    "correctAnswer": "<table><tr><td>"
+  },
+  {
+    "qusetionTitle": "Inline elements are normally displayed without starting a new line.",
+    "answer_1": "False",
+    "answer_2": "True",
+    "correctAnswer": "True"
+  },
+  {
+    "qusetionTitle": "How can you make a numbered list?",
+    "answer_1": "<ol>",
+    "answer_2": "<dl>",
+    "answer_3": "<ul>",
+    "answer_4": "<list>",
+    "correctAnswer": "<ol>"
+  },
+  {
+    "qusetionTitle": "How can you make a bulleted list?",
+    "answer_1": "<ol>",
+    "answer_2": "<dl>",
+    "answer_3": "<ul>",
+    "answer_4": "<list>",
+    "correctAnswer": "<ul>"
+  },
+  {
+    "qusetionTitle": "What is the correct HTML for making a checkbox?",
+    "answer_1": "<check>",
+    "answer_2": "<input type='checkbox>'",
+    "answer_3": "<checkbox>",
+    "answer_4": "<input type='check'",
+    "correctAnswer": "<input type='checkbox>'"
+  }
+]

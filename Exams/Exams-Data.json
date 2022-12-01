@@ -13,7 +13,7 @@
     "title": "CSS",
     "provider": "W3School",
     "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
-    "classes": "all card available"
+    "classes": "all card pending"
   },
   {
     "dataTitle": "JavaScript",
@@ -21,7 +21,7 @@
     "title": "JavaScript",
     "provider": "W3School",
     "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
-    "classes": "all card available"
+    "classes": "all card pending"
   },
   {
     "dataTitle": "Reactjs",
@@ -117,7 +117,7 @@
     "title": "C#",
     "provider": "W3School",
     "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
-    "classes": "all card"
+    "classes": "all card pending"
   },
   {
     "dataTitle": "C-Plus-Plus",
@@ -125,7 +125,7 @@
     "title": "C++",
     "provider": "W3School",
     "paragraph": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ex soluta at ipsa magnam asperiores harum autem earum dolorem tenetur fugiat illo alias, in blanditiis voluptate impedit doloribus nulla hic perferendis!",
-    "classes": "all card"
+    "classes": "all card pending"
   },
   {
     "dataTitle": "Scala",
