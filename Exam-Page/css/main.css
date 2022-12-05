@@ -237,6 +237,60 @@ ul {
   }
 }
 
+@-webkit-keyframes animate {
+  0% {
+    -webkit-transform: translate(-100px, 30px) scale(0.4) rotate(0deg);
+            transform: translate(-100px, 30px) scale(0.4) rotate(0deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50% {
+    -webkit-transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+            transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50.00001% {
+    -webkit-transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+            transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 50%;
+    z-index: 3;
+  }
+  100% {
+    -webkit-transform: translate(-100px, 30px) scale(0.4) rotate(360deg);
+            transform: translate(-100px, 30px) scale(0.4) rotate(360deg);
+    border-radius: 50%;
+    z-index: 3;
+  }
+}
+
+@keyframes animate {
+  0% {
+    -webkit-transform: translate(-100px, 30px) scale(0.4) rotate(0deg);
+            transform: translate(-100px, 30px) scale(0.4) rotate(0deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50% {
+    -webkit-transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+            transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50.00001% {
+    -webkit-transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+            transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 50%;
+    z-index: 3;
+  }
+  100% {
+    -webkit-transform: translate(-100px, 30px) scale(0.4) rotate(360deg);
+            transform: translate(-100px, 30px) scale(0.4) rotate(360deg);
+    border-radius: 50%;
+    z-index: 3;
+  }
+}
+
 /*--------------------------- Header Box Rules ---------------------------*/
 header {
   position: fixed;
@@ -423,6 +477,56 @@ header .toggle-btn {
   }
 }
 
+body {
+  position: relative;
+  overflow-x: hidden;
+}
+
+/*--------------------------- Loader Rules ---------------------------*/
+.loader {
+  width: 100px;
+  height: 100px;
+  position: absolute;
+  right: 90px;
+  top: 100px;
+  border-radius: 50%;
+  z-index: -1;
+}
+
+.loader span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.loader span:nth-child(1) {
+  background: rgba(255, 255, 255, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  border-top: 0.25px solid var(--bg-color-transparent);
+  border-left: 0.25px solid var(--bg-color-transparent);
+  z-index: 2;
+}
+
+.loader span:nth-child(2) {
+  background: var(--main-color-2);
+  -webkit-animation: animate 3s ease-in-out infinite;
+          animation: animate 3s ease-in-out infinite;
+}
+
+.loader span:nth-child(3) {
+  background: #2196f3;
+  -webkit-animation: animate 3s -1.5s ease-in-out infinite;
+          animation: animate 3s -1.5s ease-in-out infinite;
+}
+
+@media (max-width: 767px) {
+  .loader {
+    right: 15px;
+  }
+}
+
 /*--------------------------- Header Content Rules ---------------------------*/
 .header-content {
   margin-top: 100px;
@@ -467,6 +571,7 @@ header .toggle-btn {
 }
 
 .start-btn button {
+  display: inline-block;
   padding: 8px 30px;
   background: none;
   border: none;
@@ -491,6 +596,16 @@ header .toggle-btn {
   .start-btn button {
     font-size: 1.5em;
     padding: 8px 15px;
+  }
+}
+
+@media (max-width: 461px) {
+  .start-btn {
+    width: 100%;
+    padding: 0 15px;
+  }
+  .start-btn button {
+    width: 100%;
   }
 }
 
@@ -564,6 +679,10 @@ main .exam .container .question-box {
           box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   margin: 15px 0 30px;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 
 main .exam .container .question-box:after {
@@ -681,6 +800,13 @@ main .exam .container .question-box .number {
   z-index: -10;
   font-weight: bold;
   color: var(--heading-color);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  opacity: 1;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
 main .exam .submit {
@@ -752,7 +878,7 @@ main .exam .submit button {
   background: var(--heading-color);
   font-size: 18px;
   font-weight: bold;
-  letter-spacing: 1px;
+  letter-spacing: 4px;
   border-radius: 5px;
   text-transform: uppercase;
   -webkit-user-select: none;
@@ -760,6 +886,20 @@ main .exam .submit button {
       -ms-user-select: none;
           user-select: none;
   cursor: pointer;
+}
+
+@media (max-width: 767px) {
+  .exam .counter,
+  .exam .question-count,
+  .exam .question-box label {
+    font-size: 16px !important;
+  }
+  .exam .question-box h2 {
+    font-size: 22px !important;
+  }
+  .exam .number {
+    opacity: 0 !important;
+  }
 }
 
 /*--------------------------- Error handler Rules ---------------------------*/
@@ -780,22 +920,34 @@ main .exam .submit button {
           flex-direction: column;
 }
 
+.grade-box .container.perfect h2,
+.grade-box .container.perfect svg {
+  color: #4caf50 !important;
+}
+
+.grade-box .container.very-good h2 {
+  color: #2196f3 !important;
+}
+
+.grade-box .container.good h2,
+.grade-box .container.good svg {
+  color: #cddc39 !important;
+}
+
+.grade-box .container.again h2,
+.grade-box .container.again svg {
+  color: #f44336 !important;
+}
+
+.grade-box .container svg {
+  font-size: 5em;
+}
+
 .grade-box .container h2 {
-  color: var(--heading-color);
   font-size: 4em;
   letter-spacing: 6px;
-}
-
-.grade-box .container h2.perfect {
-  color: #4caf50;
-}
-
-.grade-box .container h2.good {
-  color: #cddc39;
-}
-
-.grade-box .container h2.again {
-  color: #f44336;
+  text-align: center;
+  margin: 10px 0 15px;
 }
 
 .grade-box .container p {
@@ -804,6 +956,15 @@ main .exam .submit button {
   letter-spacing: 1px;
   font-size: 20px;
   text-align: center;
+}
+
+@media (max-width: 425px) {
+  .grade-box h2 {
+    font-size: 3em !important;
+  }
+  .grade-box p {
+    font-size: 16px !important;
+  }
 }
 
 /*--------------------------- Error handler Rules ---------------------------*/

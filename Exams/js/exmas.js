@@ -100,7 +100,9 @@ filterBtn.forEach((e) => {
 
     $$(".card").forEach((e) => e.classList.remove("active"));
 
-    $$(".card").forEach((e) => e.classList.add("hidden"));
+    $$(".card").forEach((e) => {
+      e.classList.add("hidden");
+    });
 
     $$(e.currentTarget.dataset.filter).forEach((e) => {
       e.classList.add("active");

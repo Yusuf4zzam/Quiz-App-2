@@ -405,6 +405,7 @@ header .toggle-btn {
 }
 
 .exams .content .exam-container {
+  position: relative;
   display: -ms-grid;
   display: grid;
   -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
@@ -419,16 +420,25 @@ header .toggle-btn {
   border-radius: 5px;
   -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
           box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  left: 0;
+  top: 0;
   -webkit-transition: 0.5s;
   transition: 0.5s;
 }
 
 .exams .content .exam-container .card.hidden {
-  display: none;
+  opacity: 0;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  overflow: hidden;
+  position: absolute;
 }
 
 .exams .content .exam-container .card.active {
-  display: block;
+  position: relative;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+  opacity: 1;
 }
 
 .exams .content .exam-container .card.pending:after {

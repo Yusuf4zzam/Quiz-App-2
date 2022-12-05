@@ -26,3 +26,27 @@
     top: -560px;
   }
 }
+
+@keyframes animate {
+  0% {
+    transform: translate(-100px, 30px) scale(0.4) rotate(0deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50% {
+    transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50.00001% {
+    transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 50%;
+
+    z-index: 3;
+  }
+  100% {
+    transform: translate(-100px, 30px) scale(0.4) rotate(360deg);
+    border-radius: 50%;
+    z-index: 3;
+  }
+}

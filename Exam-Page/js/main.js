@@ -1,6 +1,21 @@
 let $ = document.querySelector.bind(document);
 let $$ = document.querySelectorAll.bind(document);
 
+/* -------------------------------------- Function To Shuffle The Array  -------------------------------------- */
+function shuffleArray(arr) {
+  for (let i = arr.length - 1; i > 0; i--) {
+    let j = Math.floor(Math.random() * (i + 1));
+
+    let temp = arr[i];
+
+    arr[i] = arr[j];
+
+    arr[j] = temp;
+  }
+
+  return arr;
+}
+
 /* -------------------------------------- Dark Mode Button  -------------------------------------- */
 let darkModeBtn = $(".header .icon");
 
@@ -75,6 +90,9 @@ if (localStorage.getItem("Exam-Title")) {
     .then((res) => {
       return res.json();
     })
+    .then((shuffleData) => {
+      return shuffleArray(shuffleData);
+    })
     .then((data) => {
       let count = 1;
 
@@ -135,21 +153,31 @@ if (localStorage.getItem("Exam-Title")) {
 
           // Create The Container Box
           let container = document.createElement("div");
-          container.className = "container";
+          container.classList.add("container");
 
           // Create The Grade Text Title
           let gradeTitle = document.createElement("h2");
 
+          // Create The Emojie
+          let emojie = document.createElement("i");
+
           // Perfect
           if ((grade / data.length) * 100 >= 90) {
             gradeTitle.textContent = "Perfect!";
-            gradeTitle.className = "perfect";
+            container.classList.add("perfect");
+            emojie.className = "fa-solid fa-face-kiss-wink-heart";
           } else if ((grade / data.length) * 100 >= 80) {
+            gradeTitle.textContent = "Very Good";
+            container.classList.add("very-good");
+            emojie.className = "fa-solid fa-face-smile-beam";
+          } else if ((grade / data.length) * 100 >= 70) {
             gradeTitle.textContent = "Good";
-            gradeTitle.className = "good";
+            container.classList.add("good");
+            emojie.className = "fa-solid fa-face-smile";
           } else {
             gradeTitle.textContent = "Try Again";
-            gradeTitle.className = "again";
+            container.classList.add("again");
+            emojie.className = "fa-solid fa-face-rolling-eyes";
           }
 
           // Create The Paragraph
@@ -160,6 +188,7 @@ if (localStorage.getItem("Exam-Title")) {
             `${localStorage.getItem("Exam-Title")}-Time`
           )}`;
 
+          container.appendChild(emojie);
           container.appendChild(gradeTitle);
           container.appendChild(paragraph);
           gradeBox.appendChild(container);
@@ -180,8 +209,6 @@ if (localStorage.getItem("Exam-Title")) {
           $(".exam .question-count .start-count").textContent = count;
         }
 
-        console.log(grade);
-
         createExam(data, count);
       });
 
@@ -198,6 +225,8 @@ function createExam(obj, count) {
     // Empty The Question Area
     $(".question-box").innerHTML = "";
 
+    console.log(obj[count - 1].qusetionTitle);
+
     // Create The Title
     let questionTitle = document.createElement("h2");
     questionTitle.textContent = obj[count - 1].qusetionTitle;
@@ -205,7 +234,13 @@ function createExam(obj, count) {
     // Append The Title To The Question Box
     $(".question-box").appendChild(questionTitle);
 
-    for (i = 1; i <= Object.keys(obj[count - 1]).length - 2; i++) {
+    let filterdAnswers = Object.keys(obj[count - 1]).filter((e) =>
+      e.includes("answer")
+    );
+
+    shuffleArray(filterdAnswers);
+
+    for (i = 1; i <= filterdAnswers.length; i++) {
       // Create The Input Container
       let inputContainer = document.createElement("div");
       inputContainer.className = "input-container";
@@ -215,12 +250,15 @@ function createExam(obj, count) {
       mainInput.setAttribute("type", "radio");
       mainInput.setAttribute("name", "Question");
       mainInput.setAttribute("id", `answer-${i}`);
-      mainInput.setAttribute("data-answer", obj[count - 1][`answer_${i}`]);
+      mainInput.setAttribute(
+        "data-answer",
+        obj[count - 1][filterdAnswers[i - 1]]
+      );
 
       // Create The Label For The Inputs
       let label = document.createElement("label");
       label.setAttribute("for", `answer-${i}`);
-      label.textContent = obj[count - 1][`answer_${i}`];
+      label.textContent = obj[count - 1][filterdAnswers[i - 1]];
 
       inputContainer.appendChild(mainInput);
       inputContainer.appendChild(label);

@@ -237,6 +237,60 @@ ul {
   }
 }
 
+@-webkit-keyframes animate {
+  0% {
+    -webkit-transform: translate(-100px, 30px) scale(0.4) rotate(0deg);
+            transform: translate(-100px, 30px) scale(0.4) rotate(0deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50% {
+    -webkit-transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+            transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50.00001% {
+    -webkit-transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+            transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 50%;
+    z-index: 3;
+  }
+  100% {
+    -webkit-transform: translate(-100px, 30px) scale(0.4) rotate(360deg);
+            transform: translate(-100px, 30px) scale(0.4) rotate(360deg);
+    border-radius: 50%;
+    z-index: 3;
+  }
+}
+
+@keyframes animate {
+  0% {
+    -webkit-transform: translate(-100px, 30px) scale(0.4) rotate(0deg);
+            transform: translate(-100px, 30px) scale(0.4) rotate(0deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50% {
+    -webkit-transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+            transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50.00001% {
+    -webkit-transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+            transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 50%;
+    z-index: 3;
+  }
+  100% {
+    -webkit-transform: translate(-100px, 30px) scale(0.4) rotate(360deg);
+            transform: translate(-100px, 30px) scale(0.4) rotate(360deg);
+    border-radius: 50%;
+    z-index: 3;
+  }
+}
+
 /*--------------------------- Header Box Rules ---------------------------*/
 header {
   position: fixed;
@@ -692,8 +746,8 @@ header .toggle-btn {
   content: "";
   position: absolute;
   width: 160px;
-  height: 80px;
-  top: -63px;
+  height: 103px;
+  top: -70px;
   right: 0;
   background: url(../images/circle2.png) no-repeat;
   background-size: cover;
