@@ -367,7 +367,8 @@ main {
     }
 
     &.very-good {
-      h2 {
+      h2,
+      svg {
         color: #2196f3 !important;
       }
     }

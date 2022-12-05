@@ -925,7 +925,8 @@ main .exam .submit button {
   color: #4caf50 !important;
 }
 
-.grade-box .container.very-good h2 {
+.grade-box .container.very-good h2,
+.grade-box .container.very-good svg {
   color: #2196f3 !important;
 }
 
