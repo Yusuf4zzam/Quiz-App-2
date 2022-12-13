@@ -40,6 +40,25 @@ burgerToggleBtn.addEventListener("click", () => {
   headerLists.classList.toggle("active");
 });
 
+/* -------------------------------------- Exam Counter  -------------------------------------- */
+let counter = 0;
+let seconds = "00";
+let minutes = "00";
+
+const getTimerMinutes = (counter) => {
+  let minuteCounter = Math.floor(counter / 60);
+  return minuteCounter < 10 ? `0${minuteCounter}` : `${minuteCounter}`;
+};
+
+const getTimerSeconds = (counter) => {
+  let secondCounter = counter % 60;
+
+  document.querySelector(".timer").innerHtml =
+    secondCounter < 10 ? `0${secondCounter}` : `${secondCounter}`;
+
+  return secondCounter < 10 ? `0${secondCounter}` : `${secondCounter}`;
+};
+
 /* -------------------------------------- Start Button On Click  -------------------------------------- */
 let startBtn = $(".start-btn");
 
@@ -84,140 +103,238 @@ if (localStorage.getItem("Exam-Title")) {
   )}.png`;
 
   document.title = `${localStorage.getItem("Exam-Title")} | Examiner`;
+}
 
-  // Fetch The Data Depence In The Loacl Storage
-  fetch(`./Exam-Data/${localStorage.getItem("Exam-Title")}.json`)
-    .then((res) => {
-      return res.json();
-    })
-    .then((shuffleData) => {
-      return shuffleArray(shuffleData);
-    })
-    .then((data) => {
-      let count = 1;
+if (!localStorage.getItem("Exam-Title") && location.hash == "") errorMsg();
 
-      let grade = 0;
+// Fetch The Data Depence In The Loacl Storage
+fetch(`./Exam-Data/${localStorage.getItem("Exam-Title")}.json`)
+  // Return The Data As An Object
+  .then((res) => {
+    return res.json();
+  })
 
-      $(".exam .question-count .start-count").textContent = count;
+  // Return The Shuffle Data
+  .then((shuffleData) => {
+    return shuffleArray(shuffleData);
+  })
 
-      $(".exam .question-count .count").textContent = data.length;
+  // Itterate On The Data
+  .then((data) => {
+    // The Grade Variable
+    let grade = 0;
 
-      data.forEach((e, i) => {
-        let bullets = document.createElement("span");
+    // The Start Count
+    let count = 0;
 
-        bullets.textContent = ++i < 10 ? `0${i}` : i;
+    // Put The Start Counter
+    $(".exam .question-count .start-count").textContent = count + 1;
 
-        $(".exam .submit .bullets").appendChild(bullets);
-      });
+    // Put The Length Of The Questions
+    $(".exam .question-count .count").textContent = data.length;
 
-      $$(".exam .submit .bullets span")[count - 1].className = "focus";
+    // Itterate On The Data To Create The Bullets
+    data.forEach((e, i) => {
+      // Create The Bullet Span
+      let bullets = document.createElement("span");
 
-      $(".exam .submit button").textContent =
-        count == data.length ? "Finish" : "Next";
+      // Set Dataset To The Span
+      bullets.setAttribute("data-index", i);
 
-      $(".exam .submit button").addEventListener("click", (e) => {
-        $$(".exam .submit .bullets span").forEach((e) => (e.className = ""));
+      // Set Text Content To The Span
+      bullets.textContent = ++i < 10 ? `0${i}` : i;
 
-        let checkedInput = Array.from($$(".exam .question-box input")).filter(
-          (e) => {
-            return e.checked == true;
-          }
+      // Append The Span To The Bullets Container
+      $(".exam .submit .bullets").appendChild(bullets);
+    });
+
+    // Set The First Bullet In Focused
+    $$(".exam .submit .bullets span")[count].classList.add("focus");
+
+    // Itterate On The Bullets
+    $$(".exam .submit .bullets span").forEach((e) => {
+      // Every Bullet On Click
+      e.addEventListener("click", (e) => {
+        // Remove Focus Class From Every Bullet
+        $$(".exam .submit .bullets span").forEach((e) =>
+          e.classList.remove("focus")
         );
 
+        // Add Active Class To The Current Target Bullet
+        e.currentTarget.classList.add("focus");
+
+        // Redecluer The Count Varaible By The Dataset From The Current Bullet
+        count = e.currentTarget.dataset.index;
+
+        // Change The Text Content On The Submit Button
+        $(".exam .submit button").textContent =
+          count == data.length - 1 ? "Finish" : "Next";
+
+        // Put The Start Counter
+        $(".exam .question-count .start-count").textContent =
+          +e.currentTarget.dataset.index + 1;
+
+        // Set Height To The Question Box
+        $(".question-box").style.height =
+          $$(".question-box .question-area")[count].clientHeight + "px";
+
+        // Remove Active From Each Question Area
+        $$(".question-box .question-area").forEach((e) =>
+          e.classList.remove("active")
+        );
+
+        // Add Active To The Current Question Area
+        $$(".question-box .question-area")[count].classList.add("active");
+      });
+    });
+
+    // Submit Button On Click
+    $(".exam .submit button").addEventListener("click", (e) => {
+      // Increase The Count By One
+      count++;
+
+      if (count != data.length) {
+        // Change The Text Content On The Submit Button
+        $(".exam .submit button").textContent =
+          count == data.length - 1 ? "Finish" : "Next";
+
+        // Remove Focus Class From Every Bullet When Submit Button Clicked
+        $$(".exam .submit .bullets span").forEach((e) =>
+          e.classList.remove("focus")
+        );
+
+        // Put Focus Class To The Current Bullet
+        $$(".exam .submit .bullets span")[count].classList.add("focus");
+
+        // Put The Start Counter Text Content
+        $(".exam .question-count .start-count").textContent = count + 1;
+
+        // Set Height To The Question Box
+        $(".question-box").style.height =
+          $$(".question-box .question-area")[count].clientHeight + "px";
+
+        // Remove Active From Each Question Area
+        $$(".question-box .question-area").forEach((e) =>
+          e.classList.remove("active")
+        );
+
+        // Add Active To The Current Question Area
+        $$(".question-box .question-area")[count].classList.add("active");
+
+        /* -------------------------- Check Answer --------------------*/
+        // Save The Checked Inputs Into The Varaible
+        let checkedInput = Array.from(
+          $$(".exam .question-box .question-area")[count - 1].querySelectorAll(
+            "input"
+          )
+        ).filter((e) => e.checked == true);
+
+        // Check If The User Checked Any Input Or Not
         if (checkedInput.length > 0) {
+          // Check If The Answer Is Correct
           if (checkedInput[0].dataset.answer == data[count - 1].correctAnswer) {
+            // Increase The Grade By One If Correct
             grade += 1;
 
+            // Put The Grade In The Local Storage
             localStorage.setItem(
               `${localStorage.getItem("Exam-Title")}-Grade`,
               grade
             );
           }
-        }
 
-        count++;
-
-        if (count > data.length) {
-          localStorage.setItem(
-            `${localStorage.getItem("Exam-Title")}-Time`,
-            $(".counter .timer").textContent
+          // Put complited Class To The Current Bullet
+          $$(".exam .submit .bullets span")[count - 1].classList.add(
+            "complited"
           );
+        } else {
+          // Put not-complited Class To The Current Bullet
+          $$(".exam .submit .bullets span")[count - 1].classList.add(
+            "not-complited"
+          );
+        }
+      }
 
-          $("main").classList.remove("exam-active");
+      // If He Reach The Last Question
+      if (count == data.length) {
+        // Set The Time In The Local Storage
+        localStorage.setItem(
+          `${localStorage.getItem("Exam-Title")}-Time`,
+          $(".counter .timer").textContent
+        );
 
-          clearInterval(intervalId);
+        // Remove The Active Class From The Main Element
+        $("main").classList.remove("exam-active");
 
-          // Create The Grade Box
-          let gradeBox = document.createElement("div");
-          gradeBox.className = "grade-box";
+        clearInterval(intervalId);
 
-          // Create The Container Box
-          let container = document.createElement("div");
-          container.classList.add("container");
+        // Create The Grade Box
+        let gradeBox = document.createElement("div");
+        gradeBox.className = "grade-box";
 
-          // Create The Grade Text Title
-          let gradeTitle = document.createElement("h2");
+        // Create The Container Box
+        let container = document.createElement("div");
+        container.classList.add("container");
 
-          // Create The Emojie
-          let emojie = document.createElement("i");
+        // Create The Grade Text Title
+        let gradeTitle = document.createElement("h2");
 
-          // Perfect
-          if ((grade / data.length) * 100 >= 90) {
-            gradeTitle.textContent = "Perfect!";
-            container.classList.add("perfect");
-            emojie.className = "fa-solid fa-face-kiss-wink-heart";
-          } else if ((grade / data.length) * 100 >= 80) {
-            gradeTitle.textContent = "Very Good";
-            container.classList.add("very-good");
-            emojie.className = "fa-solid fa-face-smile-beam";
-          } else if ((grade / data.length) * 100 >= 70) {
-            gradeTitle.textContent = "Good";
-            container.classList.add("good");
-            emojie.className = "fa-solid fa-face-smile";
-          } else {
-            gradeTitle.textContent = "Try Again";
-            container.classList.add("again");
-            emojie.className = "fa-solid fa-face-rolling-eyes";
-          }
+        // Create The Emojie
+        let emojie = document.createElement("i");
 
-          // Create The Paragraph
-          let paragraph = document.createElement("p");
-          paragraph.textContent = `You Have Got ${grade} From ${
-            data.length
-          } And The Time You Take is ${localStorage.getItem(
-            `${localStorage.getItem("Exam-Title")}-Time`
-          )}`;
-
-          container.appendChild(emojie);
-          container.appendChild(gradeTitle);
-          container.appendChild(paragraph);
-          gradeBox.appendChild(container);
-
-          setTimeout(() => {
-            $("main .exam").remove();
-
-            $("main").appendChild(gradeBox);
-          }, 1000);
+        // Perfect
+        if ((grade / data.length) * 100 >= 90) {
+          gradeTitle.textContent = "Perfect!";
+          container.classList.add("perfect");
+          emojie.className = "fa-solid fa-face-kiss-wink-heart";
+        } else if ((grade / data.length) * 100 >= 80) {
+          gradeTitle.textContent = "Very Good";
+          container.classList.add("very-good");
+          emojie.className = "fa-solid fa-face-smile-beam";
+        } else if ((grade / data.length) * 100 >= 70) {
+          gradeTitle.textContent = "Good";
+          container.classList.add("good");
+          emojie.className = "fa-solid fa-face-smile";
+        } else {
+          gradeTitle.textContent = "Try Again";
+          container.classList.add("again");
+          emojie.className = "fa-solid fa-face-rolling-eyes";
         }
 
-        if (count <= data.length) {
-          $(".exam .submit button").textContent =
-            count >= data.length ? "Finish" : "Next";
+        // Create The Paragraph
+        let paragraph = document.createElement("p");
+        paragraph.textContent = `You Have Got ${grade} From ${
+          data.length
+        } And The Time You Take is ${localStorage.getItem(
+          `${localStorage.getItem("Exam-Title")}-Time`
+        )}`;
 
-          $$(".exam .submit .bullets span")[count - 1].className = "focus";
+        container.appendChild(emojie);
+        container.appendChild(gradeTitle);
+        container.appendChild(paragraph);
+        gradeBox.appendChild(container);
 
-          $(".exam .question-count .start-count").textContent = count;
-        }
+        setTimeout(() => {
+          $("main .exam").remove();
 
-        createExam(data, count);
-      });
-
-      createExam(data, count);
-    })
-    .catch(() => {
-      errorMsg();
+          $("main").appendChild(gradeBox);
+        }, 1000);
+      }
     });
-}
+
+    createExam(data, count);
+
+    window.addEventListener("resize", () => {
+      // Set Height To The Question Box
+      $(".question-box").style.height =
+        $$(".question-box .question-area")[count].clientHeight + "px";
+    });
+
+    $$(".exam .submit .bullets span")[count].click();
+  })
+  .catch(() => {
+    errorMsg();
+  });
 
 // Create The Exam Function
 function createExam(obj, count) {
@@ -225,59 +342,60 @@ function createExam(obj, count) {
     // Empty The Question Area
     $(".question-box").innerHTML = "";
 
-    console.log(obj[count - 1].qusetionTitle);
+    obj.forEach((data, i) => {
+      // Create The Question Area
+      let questionArea = document.createElement("div");
+      questionArea.classList.add("question-area");
+      // Create The Title
+      let questionTitle = document.createElement("h2");
+      questionTitle.textContent = data.qusetionTitle;
 
-    // Create The Title
-    let questionTitle = document.createElement("h2");
-    questionTitle.textContent = obj[count - 1].qusetionTitle;
+      // Append The Title To The Question Box
+      questionArea.appendChild(questionTitle);
 
-    // Append The Title To The Question Box
-    $(".question-box").appendChild(questionTitle);
-
-    let filterdAnswers = Object.keys(obj[count - 1]).filter((e) =>
-      e.includes("answer")
-    );
-
-    shuffleArray(filterdAnswers);
-
-    for (i = 1; i <= filterdAnswers.length; i++) {
-      // Create The Input Container
-      let inputContainer = document.createElement("div");
-      inputContainer.className = "input-container";
-
-      // Create The Inputs And Label
-      let mainInput = document.createElement("input");
-      mainInput.setAttribute("type", "radio");
-      mainInput.setAttribute("name", "Question");
-      mainInput.setAttribute("id", `answer-${i}`);
-      mainInput.setAttribute(
-        "data-answer",
-        obj[count - 1][filterdAnswers[i - 1]]
+      let filterdAnswers = Object.keys(data).filter((e) =>
+        e.includes("answer")
       );
 
-      // Create The Label For The Inputs
-      let label = document.createElement("label");
-      label.setAttribute("for", `answer-${i}`);
-      label.textContent = obj[count - 1][filterdAnswers[i - 1]];
+      shuffleArray(filterdAnswers);
 
-      inputContainer.appendChild(mainInput);
-      inputContainer.appendChild(label);
+      filterdAnswers.forEach((e, i) => {
+        // Create The Input Container
+        let inputContainer = document.createElement("div");
+        inputContainer.className = "input-container";
 
-      $(".question-box").appendChild(inputContainer);
-    }
+        // Create The Inputs And Label
+        let mainInput = document.createElement("input");
+        mainInput.setAttribute("type", "radio");
+        mainInput.setAttribute("name", `${data.qusetionTitle}`);
+        mainInput.setAttribute("id", `${data.qusetionTitle}-${data[e]}`);
+        mainInput.setAttribute("data-answer", data[e]);
+
+        // Create The Label For The Inputs
+        let label = document.createElement("label");
+        label.setAttribute("for", `${data.qusetionTitle}-${data[e]}`);
+        label.textContent = data[e];
+
+        inputContainer.appendChild(mainInput);
+        inputContainer.appendChild(label);
+
+        questionArea.appendChild(inputContainer);
+
+        $(".question-box").appendChild(questionArea);
+      });
+
+      // Create The Question Number
+      let questioNumber = document.createElement("div");
+      questioNumber.className = "number";
+      questioNumber.textContent = i + 1 < 10 ? `0${i + 1}` : i + 1;
+
+      // Append The Question Number To The Question Box
+      questionArea.appendChild(questioNumber);
+    });
   }
-
-  // Create The Question Number
-  let questioNumber = document.createElement("div");
-  questioNumber.className = "number";
-  questioNumber.textContent = count < 10 ? `0${count}` : count;
-
-  // Append The Question Number To The Question Box
-  $(".question-box").appendChild(questioNumber);
 }
 
-if (!localStorage.getItem("Exam-Title") && location.hash == "") errorMsg();
-
+/* --------------------------- Error Message Function----------------------------------------- */
 function errorMsg() {
   document.querySelector("main").innerHTML = "";
 
@@ -307,22 +425,3 @@ function errorMsg() {
 
   document.querySelector("main").appendChild(errorHandlerBox);
 }
-
-/* -------------------------------------- Exam Counter  -------------------------------------- */
-let counter = 0;
-let seconds = "00";
-let minutes = "00";
-
-const getTimerMinutes = (counter) => {
-  let minuteCounter = Math.floor(counter / 60);
-  return minuteCounter < 10 ? `0${minuteCounter}` : `${minuteCounter}`;
-};
-
-const getTimerSeconds = (counter) => {
-  let secondCounter = counter % 60;
-
-  document.querySelector(".timer").innerHtml =
-    secondCounter < 10 ? `0${secondCounter}` : `${secondCounter}`;
-
-  return secondCounter < 10 ? `0${secondCounter}` : `${secondCounter}`;
-};

@@ -488,7 +488,7 @@ body {
   height: 100px;
   position: absolute;
   right: 90px;
-  top: 100px;
+  top: -20px;
   border-radius: 50%;
   z-index: -1;
 }
@@ -523,7 +523,7 @@ body {
 
 @media (max-width: 767px) {
   .loader {
-    right: 15px;
+    display: none;
   }
 }
 
@@ -665,6 +665,17 @@ main .exam .container .info .question-count span {
 
 main .exam .container .question-box {
   position: relative;
+  height: 0;
+  margin: 15px 0 40px;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+}
+
+main .exam .container .question-box .question-area {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -678,14 +689,22 @@ main .exam .container .question-box {
   -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
           box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   border-radius: 6px;
-  margin: 15px 0 30px;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  z-index: -1;
+  opacity: 0;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
 }
 
-main .exam .container .question-box:after {
+main .exam .container .question-box .question-area.active {
+  z-index: 1;
+  opacity: 1;
+}
+
+main .exam .container .question-box .question-area:after {
   content: "";
   position: absolute;
   left: 0;
@@ -854,11 +873,11 @@ main .exam .submit .bullets span {
   font-weight: bold;
   letter-spacing: 1px;
   font-size: 14px;
+  cursor: pointer;
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
-  pointer-events: none;
   opacity: 0.5;
   -webkit-transition: 0.5s;
   transition: 0.5s;
@@ -866,6 +885,20 @@ main .exam .submit .bullets span {
 
 main .exam .submit .bullets span.focus {
   opacity: 1;
+  color: var(--bg-color-1) !important;
+  background: var(--heading-color) !important;
+}
+
+main .exam .submit .bullets span.not-complited {
+  color: #fff;
+  opacity: 1;
+  background: #fd3122;
+}
+
+main .exam .submit .bullets span.complited {
+  color: #fff;
+  opacity: 1;
+  background: #2196f3;
 }
 
 main .exam .submit button {
