@@ -69,7 +69,7 @@ let daysBox = document.querySelector(".events .days h3");
 let hoursBox = document.querySelector(".events .hours h3");
 let minutesBox = document.querySelector(".events .minutes h3");
 let secondsBox = document.querySelector(".events .seconds h3");
-let date = new Date("Feb 20, 2023, 00:00:00").getTime();
+let date = new Date("Feb 20, 2025, 00:00:00").getTime();
 
 setInterval(() => {
   let dateNow = new Date().getTime();

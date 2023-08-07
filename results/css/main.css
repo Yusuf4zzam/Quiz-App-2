@@ -189,6 +189,122 @@ footer svg {
   margin-left: 5px;
 }
 
+@-webkit-keyframes imgAnimate {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes imgAnimate {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(-10px);
+            transform: translateY(-10px);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes textAnimate {
+  40%,
+  60% {
+    left: calc(100% + 5px);
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@keyframes textAnimate {
+  40%,
+  60% {
+    left: calc(100% + 5px);
+  }
+  100% {
+    left: 0;
+  }
+}
+
+@-webkit-keyframes slide {
+  100% {
+    top: -560px;
+  }
+}
+
+@keyframes slide {
+  100% {
+    top: -560px;
+  }
+}
+
+@-webkit-keyframes animate {
+  0% {
+    -webkit-transform: translate(-100px, 30px) scale(0.4) rotate(0deg);
+            transform: translate(-100px, 30px) scale(0.4) rotate(0deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50% {
+    -webkit-transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+            transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50.00001% {
+    -webkit-transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+            transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 50%;
+    z-index: 3;
+  }
+  100% {
+    -webkit-transform: translate(-100px, 30px) scale(0.4) rotate(360deg);
+            transform: translate(-100px, 30px) scale(0.4) rotate(360deg);
+    border-radius: 50%;
+    z-index: 3;
+  }
+}
+
+@keyframes animate {
+  0% {
+    -webkit-transform: translate(-100px, 30px) scale(0.4) rotate(0deg);
+            transform: translate(-100px, 30px) scale(0.4) rotate(0deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50% {
+    -webkit-transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+            transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 0;
+    z-index: 1;
+  }
+  50.00001% {
+    -webkit-transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+            transform: translate(100px, -30px) scale(0.4) rotate(180deg);
+    border-radius: 50%;
+    z-index: 3;
+  }
+  100% {
+    -webkit-transform: translate(-100px, 30px) scale(0.4) rotate(360deg);
+            transform: translate(-100px, 30px) scale(0.4) rotate(360deg);
+    border-radius: 50%;
+    z-index: 3;
+  }
+}
+
 /*--------------------------- Header Box Rules ---------------------------*/
 header {
   position: fixed;
@@ -375,165 +491,90 @@ header .toggle-btn {
   }
 }
 
-/*--------------------------- Exams Box Rules ---------------------------*/
-.exams {
-  padding: 100px 0;
+/*--------------------------- Header Content Rules ---------------------------*/
+.header-content {
+  margin: 100px 0 70px;
 }
 
-.exams .controlers {
-  margin-bottom: 15px;
-  padding-right: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
+.header-content h3 {
+  margin-bottom: 0;
+}
+
+@media (max-width: 500px) {
+  .header-content br {
+    display: none;
+  }
+}
+
+/*--------------------------- main Rules ---------------------------*/
+main .container {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (minmax(250px, 1fr))[auto-fill];
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 30px;
 }
 
-.exams .controlers button {
-  display: inline-block;
-  color: var(--heading-color);
-  background: transparent;
-  border: none;
-  font-size: 14px;
-  font-weight: 600;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  cursor: pointer;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.exams .controlers button.active {
-  color: var(--main-color-1);
-}
-
-.exams .content {
-  padding: 30px;
-  border: 3px solid var(--bg-color-2);
-  border-radius: 5px;
-}
-
-.exams .content .exam-container {
-  position: relative;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: (minmax(250px, 1fr))[auto-fit];
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 40px;
-}
-
-.exams .content .exam-container .card {
-  position: relative;
-  padding: 30px;
-  background: var(--bg-color-2);
-  border-radius: 5px;
+main .container .card {
+  padding: 30px 0;
   -webkit-box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
           box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
-  left: 0;
-  top: 0;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
-}
-
-.exams .content .exam-container .card.hidden {
-  opacity: 0;
-  -webkit-transform: scale(0);
-          transform: scale(0);
-  overflow: hidden;
-  position: absolute;
-}
-
-.exams .content .exam-container .card.active {
-  position: relative;
-  -webkit-transform: scale(1);
-          transform: scale(1);
-  opacity: 1;
-}
-
-.exams .content .exam-container .card.pending:after {
-  content: "Soon";
-  position: absolute;
-  right: 30px;
-  top: 30px;
-  font-size: 11px;
-  color: #fff;
-  padding: 3px 7px;
-  background: #f44336;
-  letter-spacing: 1px;
-  font-weight: 500;
   border-radius: 5px;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
 }
 
-.exams .content .exam-container .card:hover {
+main .container .card:hover {
   -webkit-transform: translateY(-5px);
           transform: translateY(-5px);
 }
 
-.exams .content .exam-container .card img {
-  max-width: 50px;
+main .container .card .img-box {
+  text-align: center;
   margin-bottom: 20px;
-  color: var(--text-color);
 }
 
-.exams .content .exam-container .card h4 {
-  color: var(--heading-color);
-  text-transform: uppercase;
-  font-size: 0.85rem;
-  letter-spacing: 1px;
-  padding: 0.13rem 0.75rem;
-  border-left: 3px solid var(--main-color-2);
+main .container .card .img-box img {
+  width: 100px;
 }
 
-.exams .content .exam-container .card h3 {
-  margin: 0.5rem 0 1rem;
-  font-size: 1.5rem;
+main .container .card .content-box {
+  padding: 0 15px;
+}
+
+main .container .card .content-box h3 {
+  font-size: 35px;
   color: var(--heading-color);
 }
 
-.exams .content .exam-container .card p {
-  color: var(--text-color);
-  font-size: 14px;
-  line-height: 1.5;
-  margin: 0.5rem 0 0;
+main .container .card .content-box .grade {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 30px;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  margin: 10px 0;
 }
 
-.exams .content .exam-container .card a {
-  display: block;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  margin: 2rem auto 0;
-  letter-spacing: 1px;
-  font-weight: 500;
-  color: #fff;
-  background: var(--main-color-1);
-  padding: 10px 20px;
-  border: 1px solid transparent;
-  border-radius: 5px;
-  text-transform: uppercase;
-  letter-spacing: 1px;
+main .container .card .content-box .grade p {
   font-weight: bold;
-  -webkit-transition: 0.5s;
-  transition: 0.5s;
+  letter-spacing: 1px;
+  font-size: 15px;
+  color: var(--text-color);
 }
 
-.exams .content .exam-container .card a:hover {
-  background: transparent;
+main .container .card .content-box .grade p b {
   color: var(--main-color-1);
-  border: 1px solid var(--main-color-1);
 }
 
-@media (max-width: 767px) {
-  .header-content br {
-    display: none;
-  }
-  .exams .content {
-    padding: 15px;
-  }
+main .container .card .content-box .date {
+  text-align: right;
+  font-size: 14px;
+  color: var(--text-color);
+  letter-spacing: 1px;
 }
 /*# sourceMappingURL=main.css.map */

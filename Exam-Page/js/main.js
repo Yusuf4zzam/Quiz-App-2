@@ -81,6 +81,12 @@ startBtn.addEventListener("click", () => {
 
     counter = counter + 1;
   }, 1000);
+
+  // Set Height To The Question Box
+  $(".question-box").style.height =
+    $$(".question-box .question-area")[0].clientHeight + "px";
+
+  $$(".question-box .question-area")[0].classList.add("active");
 });
 
 /* -------------------------------------- Get The Data From The Storage  -------------------------------------- */
@@ -106,6 +112,12 @@ if (localStorage.getItem("Exam-Title")) {
 }
 
 if (!localStorage.getItem("Exam-Title") && location.hash == "") errorMsg();
+
+let examsData = [];
+
+if (localStorage.getItem("Exams-Data")) {
+  examsData = JSON.parse(localStorage.getItem("Exams-Data"));
+}
 
 // Fetch The Data Depence In The Loacl Storage
 fetch(`./Exam-Data/${localStorage.getItem("Exam-Title")}.json`)
@@ -133,61 +145,6 @@ fetch(`./Exam-Data/${localStorage.getItem("Exam-Title")}.json`)
     // Put The Length Of The Questions
     $(".exam .question-count .count").textContent = data.length;
 
-    // Itterate On The Data To Create The Bullets
-    data.forEach((e, i) => {
-      // Create The Bullet Span
-      let bullets = document.createElement("span");
-
-      // Set Dataset To The Span
-      bullets.setAttribute("data-index", i);
-
-      // Set Text Content To The Span
-      bullets.textContent = ++i < 10 ? `0${i}` : i;
-
-      // Append The Span To The Bullets Container
-      $(".exam .submit .bullets").appendChild(bullets);
-    });
-
-    // Set The First Bullet In Focused
-    $$(".exam .submit .bullets span")[count].classList.add("focus");
-
-    // Itterate On The Bullets
-    $$(".exam .submit .bullets span").forEach((e) => {
-      // Every Bullet On Click
-      e.addEventListener("click", (e) => {
-        // Remove Focus Class From Every Bullet
-        $$(".exam .submit .bullets span").forEach((e) =>
-          e.classList.remove("focus")
-        );
-
-        // Add Active Class To The Current Target Bullet
-        e.currentTarget.classList.add("focus");
-
-        // Redecluer The Count Varaible By The Dataset From The Current Bullet
-        count = e.currentTarget.dataset.index;
-
-        // Change The Text Content On The Submit Button
-        $(".exam .submit button").textContent =
-          count == data.length - 1 ? "Finish" : "Next";
-
-        // Put The Start Counter
-        $(".exam .question-count .start-count").textContent =
-          +e.currentTarget.dataset.index + 1;
-
-        // Set Height To The Question Box
-        $(".question-box").style.height =
-          $$(".question-box .question-area")[count].clientHeight + "px";
-
-        // Remove Active From Each Question Area
-        $$(".question-box .question-area").forEach((e) =>
-          e.classList.remove("active")
-        );
-
-        // Add Active To The Current Question Area
-        $$(".question-box .question-area")[count].classList.add("active");
-      });
-    });
-
     // Submit Button On Click
     $(".exam .submit button").addEventListener("click", (e) => {
       // Increase The Count By One
@@ -197,14 +154,6 @@ fetch(`./Exam-Data/${localStorage.getItem("Exam-Title")}.json`)
         // Change The Text Content On The Submit Button
         $(".exam .submit button").textContent =
           count == data.length - 1 ? "Finish" : "Next";
-
-        // Remove Focus Class From Every Bullet When Submit Button Clicked
-        $$(".exam .submit .bullets span").forEach((e) =>
-          e.classList.remove("focus")
-        );
-
-        // Put Focus Class To The Current Bullet
-        $$(".exam .submit .bullets span")[count].classList.add("focus");
 
         // Put The Start Counter Text Content
         $(".exam .question-count .start-count").textContent = count + 1;
@@ -220,48 +169,39 @@ fetch(`./Exam-Data/${localStorage.getItem("Exam-Title")}.json`)
 
         // Add Active To The Current Question Area
         $$(".question-box .question-area")[count].classList.add("active");
+      }
 
-        /* -------------------------- Check Answer --------------------*/
-        // Save The Checked Inputs Into The Varaible
-        let checkedInput = Array.from(
-          $$(".exam .question-box .question-area")[count - 1].querySelectorAll(
-            "input"
-          )
-        ).filter((e) => e.checked == true);
+      /* -------------------------- Check Answer --------------------*/
+      // Save The Checked Inputs Into The Varaible
+      let checkedInput = Array.from(
+        $$(".exam .question-box .question-area")[count - 1].querySelectorAll(
+          "input"
+        )
+      ).filter((e) => e.checked == true);
 
-        // Check If The User Checked Any Input Or Not
-        if (checkedInput.length > 0) {
-          // Check If The Answer Is Correct
-          if (checkedInput[0].dataset.answer == data[count - 1].correctAnswer) {
-            // Increase The Grade By One If Correct
-            grade += 1;
-
-            // Put The Grade In The Local Storage
-            localStorage.setItem(
-              `${localStorage.getItem("Exam-Title")}-Grade`,
-              grade
-            );
-          }
-
-          // Put complited Class To The Current Bullet
-          $$(".exam .submit .bullets span")[count - 1].classList.add(
-            "complited"
-          );
-        } else {
-          // Put not-complited Class To The Current Bullet
-          $$(".exam .submit .bullets span")[count - 1].classList.add(
-            "not-complited"
-          );
+      // Check If The User Checked Any Input Or Not
+      if (checkedInput.length > 0) {
+        // Check If The Answer Is Correct
+        if (checkedInput[0].dataset.answer == data[count - 1].correctAnswer) {
+          // Increase The Grade By One If Correct
+          grade += 1;
         }
       }
 
       // If He Reach The Last Question
       if (count == data.length) {
-        // Set The Time In The Local Storage
-        localStorage.setItem(
-          `${localStorage.getItem("Exam-Title")}-Time`,
-          $(".counter .timer").textContent
-        );
+        let localExamsData = {
+          exam_title: `${localStorage.getItem("Exam-Title")}`,
+          exam_time: $(".counter .timer").textContent,
+          exam_grade: grade,
+          question_length: data.length,
+          time_now: new Date().toDateString(),
+        };
+
+        examsData.push(localExamsData);
+
+        // Set The Exams Data In The Local Storage
+        localStorage.setItem(`Exams-Data`, JSON.stringify(examsData.reverse()));
 
         // Remove The Active Class From The Main Element
         $("main").classList.remove("exam-active");
@@ -305,9 +245,7 @@ fetch(`./Exam-Data/${localStorage.getItem("Exam-Title")}.json`)
         let paragraph = document.createElement("p");
         paragraph.textContent = `You Have Got ${grade} From ${
           data.length
-        } And The Time You Take is ${localStorage.getItem(
-          `${localStorage.getItem("Exam-Title")}-Time`
-        )}`;
+        } And The Time You Take is ${$(".counter .timer").textContent}`;
 
         container.appendChild(emojie);
         container.appendChild(gradeTitle);
@@ -325,12 +263,12 @@ fetch(`./Exam-Data/${localStorage.getItem("Exam-Title")}.json`)
     createExam(data, count);
 
     window.addEventListener("resize", () => {
-      // Set Height To The Question Box
-      $(".question-box").style.height =
-        $$(".question-box .question-area")[count].clientHeight + "px";
+      if ($(".question-box")) {
+        // Set Height To The Question Box
+        $(".question-box").style.height =
+          $$(".question-box .question-area")[count].clientHeight + "px";
+      }
     });
-
-    $$(".exam .submit .bullets span")[count].click();
   })
   .catch(() => {
     errorMsg();
@@ -346,6 +284,8 @@ function createExam(obj, count) {
       // Create The Question Area
       let questionArea = document.createElement("div");
       questionArea.classList.add("question-area");
+      questionArea.setAttribute("data-index", i);
+
       // Create The Title
       let questionTitle = document.createElement("h2");
       questionTitle.textContent = data.qusetionTitle;
